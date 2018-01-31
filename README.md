@@ -12,7 +12,6 @@
 - Ck Obieyisi
 - Shixun Huang
 
-**Bold** and _Italic_ and `Code` text
 
 
 
