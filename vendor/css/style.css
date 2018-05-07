@@ -691,7 +691,7 @@ input::-ms-input-placeholder {
 }
 .main_choose_area .main_choose_content .single_choose_content p{
     font-size:1.125rem;
-    color:#333333;
+    color:#404140;
     line-height: 2rem;
     margin:40px 0px;
     width:60%;
@@ -975,15 +975,15 @@ margin: 0;
   padding: 0;
   margin: 0;
 }
-
-.problems{
-    background-color: #1a191b;
+#steps{
+    background: #22c713;
+    color: #fff;
 }
-.problems img{
-    height: auto; 
-    width: auto; 
-    max-width: 300px; 
-    max-height: 300px;
+#problems{
+    background: #22c713;
+    text-align: center;
+    color: #fff;
+    
 }
 .arrow{
   float:left;
