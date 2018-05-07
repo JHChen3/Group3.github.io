@@ -920,6 +920,10 @@ input::-ms-input-placeholder {
     padding: 0px 10px;
 }
 
+#problems {
+    background-color: #1f1f1f;
+}
+
 /* scrollup */
 
 .scrollup{
