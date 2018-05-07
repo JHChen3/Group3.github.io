@@ -957,7 +957,7 @@ input::-ms-input-placeholder {
 
 }
 .step{
-  float:left;
+  float:center;
   width:300px;
   height:auto;
   margin: 0;
@@ -971,11 +971,20 @@ margin: 0;
 .step img{
   width: 300px;
   height:300px;
-  border: 10px solid Bisque;
+  border: 10px solid rgb(255, 255, 255);
   padding: 0;
   margin: 0;
 }
 
+.problems{
+    background-color: #1a191b;
+}
+.problems img{
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 300px;
+}
 .arrow{
   float:left;
   padding: 0;
