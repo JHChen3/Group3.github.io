@@ -25,7 +25,7 @@ function onSignIn(googleUser) {
     $("#invisible").css("display", "none");
     $(".g-signin2").css("display", "block" );
     $(".data").css("display", "none");
-    setTimeout(function(){ window.location = 'http://localhost:8888/Group3/'; }, 1500);
+    setTimeout(function(){ window.location = 'http://localhost:8888/Group3.github.io/'; }, 1500);
     });
 
 
