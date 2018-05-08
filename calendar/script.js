@@ -1,4 +1,3 @@
-
 function onSignIn(googleUser) {
 
   var profile = googleUser.getBasicProfile();
@@ -15,6 +14,8 @@ function onSignIn(googleUser) {
   $("#profile").text("Your Profile");
 
   $("#set_calendar").css("display", "block");
+
+  $("#event_id_alert").css("display", "block");
 
 
 }

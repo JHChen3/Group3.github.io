@@ -47,6 +47,10 @@
 		#schedule_text{
 			display: none;
 		}
+
+		#event_id_alert{
+			display: none;
+		}
 	</style>
 
 </head>
@@ -189,7 +193,7 @@
 			}
 		</script>
 	
-<p style="border:1px solid black; margin: 1px 1px 30px 1px;background-color: black;color:white;">Forget your event id?<br>Send a message to jchunhui3@gmail.com</p>
+<p id="event_id_alert" style="border:1px solid black; margin: 1px 1px 30px 1px;background-color: black;color:white;">Forget your event id?<br>Send a message to jchunhui3@gmail.com</p>
 <a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger">Sign out</a>
 
 	<?php }
