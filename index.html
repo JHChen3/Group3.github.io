@@ -4,15 +4,13 @@
 - Bilal Hussain
 - Ck Obieyisi
 - Shixun Huang-->
-
-<!doctype html>
+<!Doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="">
 <!--<![endif]-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -76,7 +74,7 @@
 
             var profile = googleUser.getBasicProfile();
             $(".g-signin2").css("display", "none" );
-            $("#g_in").text("Signed in");
+            $("#g_in").text(" Logged in");
             $(".g_menu").css("display", "block");
         }
 
@@ -122,12 +120,12 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <!-- <li>
-                                            <a href="index.html">
+                                        <li>
+                                            <a href="#home">
                                                 <span class="glyphicon glyphicon-home"></span> Home</a>
                                         </li>
                                         <li>
-                                            <a href="#problem">
+                                            <a href="#problems">
                                                 <span class="glyphicon glyphicon-wrench"></span> Services</a>
                                         </li>
                                         <li>
@@ -137,10 +135,10 @@
                                         <li>
                                             <a href="#contact">
                                                 <span class="glyphicon glyphicon-phone-alt"></span> Contact Us</a>
-                                        </li> -->
+                                        </li>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <span class="glyphicon glyphicon-log-in"></span><span id="g_in">Log In</span>
+                                                <span id="g_in"><span class="glyphicon glyphicon-log-in"></span> Log In</span>
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -150,7 +148,7 @@
                                                 </div> -->
                                                 <div class="g-signin2" data-onsuccess="onSignIn" style="margin-left: 15px"></div>
                                                 <div class="g_menu"><a href="/Group3.github.io/calendar">Make Appointment</a></div>
-                                                <div class="g_menu"><a href="/Group3.github.io/data">See Data</a></div>
+                                                <div class="g_menu"><a href="/Group3.github.io/data" id = 'loginButton'>See Data</a></div>
                                                 <div class="g_menu"><a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut()">Logout</a></div>
                                         </li>
                                         </ul>
@@ -167,6 +165,7 @@
         </div>
     </header>
 <!-- Info Carousel -->
+<a name = "home"></a>
 <section id="home" class="home">
         <div class="overlay" style="background: url('images/homebg.jpg') no-repeat; background-size: cover;">
             <div class="container">
@@ -210,7 +209,8 @@
         </div>
 </section>
 <!-- Problems -->
-<section>
+<a name = "problems"></a>
+<section id = "problems">
     <div class="container" id="problems">
         <div class="row">
             <div class="col-md-4">
@@ -240,7 +240,7 @@
 </section>
 <a name = "services">
 <!-- Steps and Info -->
-<section>
+<section id = "steps">
     <div class="container" id="steps">
         <div class="row">
             <div class="main_service_area sections">
@@ -300,8 +300,7 @@
         <div class="row">
             <div class="main_contact sections">
                 <div class="head_title text-center">
-                    <h2>Contact</h2>
-                    <p style="font-size: 30px;">If you have any questions, feel free to contact us.</p>
+                    <h2>Contact Us</h2>
                 </div>
 
                 <div class="row">
@@ -334,7 +333,6 @@
                         </div> -->
                         <div class="col-sm-5 col-sm-offset-1 col-xs-12" style="text-align: center; margin:0 350px">
                             <div class="single_message_right_info">
-                                <h4>Contact Info :</h4>
                                 <ul>
                                     <li>
                                         <a href="">
@@ -390,6 +388,7 @@
 
         <script src="vendor/js/plugins.js"></script>
         <script src="vendor/js/main.js"></script>
-
-    </body>
+        
+        <script type="text/javascript" src="/data/Getting_JSON_from_the_WIFI_Module_Server.js"></script>
+        </body>
 </html>
