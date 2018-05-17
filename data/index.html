@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Getting the data</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="shortcut icon" href="../images/our_icon.png">
+	<meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="25123215400-79lpb10ilu1otmnnv6g449ujjj68mhtu.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="script.js"></script>
+    <style>
+    	#google_signIn{
+			margin: 15px 30px 0 5px;
+			border: 1px solid red;
+			float: right;
+			width: 520px;
+			height: 590px;
+		}
+		#server_data{
+			float:right;
+			width:700px; 
+			height:550px; 
+			margin-right: 10px; 
+			margin-top: 30px;
+			border:1px solid black;
+		} 
+		#loginButton{
+			margin-left: 20px;
+		}
+		#displaystuff{
+			margin-left: 3px;
+			width: 660px;
+			height: 450px;
+			overflow:scroll;
+		}
+
+    </style>
+</head>
+<body>
+
+	<div id="server_data">
+   		<h1 style="border-bottom: 1px solid black; text-align: center">Getting Data from WIFI Module Server</h1>
+   		<button id="loginButton">Getting Data</button>
+   		<div id="displaystuff"></div>
+    </div>
+
+	<div id="google_signIn">
+		<h4 id="profile" style="border-bottom: 1px solid red; background-color: silver; margin-top: 0;text-align: center">Click the button below to sign in</h4>
+		<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+
+
+		<div class="data">
+   			<img id="pic" class="img-circle" width="50" height="50" style="margin-left: 3px;">
+
+   			<p style="margin-left:2px;">Username:</p>
+   			<p id="username" class="alert alert-danger" style="margin-left: 2px; margin-right: 2px"></p>
+
+   			<p style="margin-left:2px;">Email address:</p>
+   			<p id="email" class="alert alert-danger" style="margin-left: 2px; margin-right: 2px"></p>
+
+
+   			<a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger" style="margin-left: 2px;">Sign out</a>
+    	</div>
+	</div>
+
+</body>
+</html>

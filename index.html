@@ -43,7 +43,10 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta name="google-signin-client_id" content="25123215400-9c6i2rkgv6sgfscbql8e6a9aao0lmraa.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="25123215400-79lpb10ilu1otmnnv6g449ujjj68mhtu.apps.googleusercontent.com">
+
+    <meta name="google-signin-scope" content="profile email">
+ 
     <style>
         img.size {
             position: relative;
@@ -57,7 +60,36 @@
             border-radius: 10%;
 
         }
+        #g_in{
+            margin-left: 2px;
+        }
+        .dropdown-menu div{
+            margin-left: 10px;
+        }
+        .g_menu{
+            display: none;
+        }
     </style>
+
+    <script>
+        function onSignIn(googleUser) {
+
+            var profile = googleUser.getBasicProfile();
+            $(".g-signin2").css("display", "none" );
+            $("#g_in").text("Signed in");
+            $(".g_menu").css("display", "block");
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            // $("#g_in").text("Log in");
+            // $(".g_menu").css("display", "none");
+
+            setTimeout(function(){ window.location = 'http://localhost:8888/Group3.github.io/'; }, 1500);
+        });
+        }
+    </script>
 
 </head>
 
@@ -90,8 +122,8 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li>
-                                            <a href="main.html">
+                                        <!-- <li>
+                                            <a href="index.html">
                                                 <span class="glyphicon glyphicon-home"></span> Home</a>
                                         </li>
                                         <li>
@@ -105,17 +137,21 @@
                                         <li>
                                             <a href="#contact">
                                                 <span class="glyphicon glyphicon-phone-alt"></span> Contact Us</a>
-                                        </li>
+                                        </li> -->
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <span class="glyphicon glyphicon-log-in"></span> Log In
+                                                <span class="glyphicon glyphicon-log-in"></span><span id="g_in">Log In</span>
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                                 <li role="presentation"></li>
-                                                <div id="login">
+                                                <!-- <div id="login">
                                                     <a role="menuitem" href="/Group3.github.io/calendar"> Google Account</a>
-                                                </div>
+                                                </div> -->
+                                                <div class="g-signin2" data-onsuccess="onSignIn" style="margin-left: 15px"></div>
+                                                <div class="g_menu"><a href="/Group3.github.io/calendar">Make Appointment</a></div>
+                                                <div class="g_menu"><a href="/Group3.github.io/data">See Data</a></div>
+                                                <div class="g_menu"><a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut()">Logout</a></div>
                                         </li>
                                         </ul>
                                         </li>
@@ -132,7 +168,7 @@
     </header>
 <!-- Info Carousel -->
 <section id="home" class="home">
-        <div class="overlay">
+        <div class="overlay" style="background: url('images/homebg.jpg') no-repeat; background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 ">
@@ -141,9 +177,9 @@
                                 <div class="main_home wow fadeInUp" data-wow-duration="700ms">
                                     <h1>Here to clean up after your mess</h1>
                                     <p class="subtitle">Feel at ease with Spencer</p>
-                                    <div class="home_btn">
+                                    <!-- <div class="home_btn">
                                         <a href="#service" class="btn btn-md">Learn More</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="single_home_slider">
@@ -151,9 +187,9 @@
                                     <h1>Want to clean up a room?</h1>
                                     <p class="subtitle">With a broom? NO! Use Spencer! </p>
 
-                                    <div class="home_btn">
+                                    <!-- <div class="home_btn">
                                         <a href="#steps" class="btn btn-md">Learn More</a>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                             </div>
@@ -162,9 +198,9 @@
                                     <h1>Encountering sanitation problems?</h1>
                                     <p class="subtitle">We're here to help!</p>
 
-                                    <div class="home_btn">
+                                    <!-- <div class="home_btn">
                                         <a href="#contact" class="btn btn-md">Learn More</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -174,8 +210,8 @@
         </div>
 </section>
 <!-- Problems -->
-<section id="problems">
-    <div class="container">
+<section>
+    <div class="container" id="problems">
         <div class="row">
             <div class="col-md-4">
                 </br>
@@ -204,8 +240,8 @@
 </section>
 <a name = "services">
 <!-- Steps and Info -->
-<section id="steps">
-    <div class="container">
+<section>
+    <div class="container" id="steps">
         <div class="row">
             <div class="main_service_area sections">
                 <div class="col-sm-6">
@@ -259,8 +295,8 @@
 </section>
 <!-- Contact Section -->
 <a name = "contact">
-<section id="contact" class="contact">
-    <div class="container">
+<section class="contact">
+    <div class="container" id="contact">
         <div class="row">
             <div class="main_contact sections">
                 <div class="head_title text-center">
@@ -271,13 +307,13 @@
                 <div class="row">
                     <div class="contact_contant">
 
-                        <div class="col-sm-6 col-xs-12">
+                        <!-- <div class="col-sm-6 col-xs-12">
                             <h4>Leave A Message</h4>
                             <div class="single_contant_left">
-                                <form action="#" id="formid">
+                                <form action="#" id="formid"> -->
                                     <!--<div class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">-->
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input type="text" class="form-control" name="name" placeholder="Full name" required="">
                                     </div>
 
@@ -291,12 +327,12 @@
 
                                     <div class="">
                                         <input type="submit" value="Send" class="btn btn-primary">
-                                    </div>
+                                    </div> -->
                                     <!--</div>-->
-                                </form>
+                                <!-- </form>
                             </div>
-                        </div>
-                        <div class="col-sm-5 col-sm-offset-1 col-xs-12">
+                        </div> -->
+                        <div class="col-sm-5 col-sm-offset-1 col-xs-12" style="text-align: center; margin:0 350px">
                             <div class="single_message_right_info">
                                 <h4>Contact Info :</h4>
                                 <ul>
