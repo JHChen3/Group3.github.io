@@ -16,7 +16,7 @@ loginButton.addEventListener('click', function(){
 
   ourRequest.send();
 
-  loginButton.classList.add("hide-me"); //This is optional.. This calls a css class to hide the button
+  //loginButton.classList.add("hide-me"); //This is optional.. This calls a css class to hide the button
 });
 
 //This send the json data to a HTML variable for display

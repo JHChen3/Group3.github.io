@@ -74,7 +74,7 @@
 
             var profile = googleUser.getBasicProfile();
             $(".g-signin2").css("display", "none" );
-            $("#g_in").text(" Logged in");
+            $("#g_in").text(profile.getName());
             $(".g_menu").css("display", "block");
         }
 
@@ -336,7 +336,7 @@
                                 <ul>
                                     <li>
                                         <a href="">
-                                            <i class="fa fa-home"></i> 370 Jay St, Brooklyn, NY 11201 12th Flxoor</a>
+                                            <i class="fa fa-home"></i> 370 Jay St, Brooklyn, NY 11201 12th Floor</a>
                                     </li>
                                     <li>
                                         <a href="">

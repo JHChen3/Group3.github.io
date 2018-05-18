@@ -7,6 +7,7 @@ function onSignIn(googleUser) {
 
   $("#email").text(profile.getEmail());
 
+
   $("#username").text(profile.getName());
 
   $("#calendar").css("display", "block");
@@ -16,6 +17,9 @@ function onSignIn(googleUser) {
   $("#set_calendar").css("display", "block");
 
   $("#event_id_alert").css("display", "block");
+
+
+
 
 
 }

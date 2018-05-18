@@ -15,13 +15,58 @@
 <head>
 	<title>Calendar</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	<link rel="shortcut icon" href="../images/our_icon.png">
 	<meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="25123215400-79lpb10ilu1otmnnv6g449ujjj68mhtu.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+    var a;
+    function onSignIn(googleUser) {
+
+  var profile = googleUser.getBasicProfile();
+  $(".g-signin2").css("display", "none" );
+
+  $("#pic").attr("src", profile.getImageUrl());
+
+  $("#email").text(profile.getEmail());
+
+
+  $("#username").text(profile.getName());
+
+  $("#calendar").css("display", "block");
+
+  $("#profile").text("Your Profile");
+
+  $("#set_calendar").css("display", "block");
+
+  $("#event_id_alert").css("display", "block");
+
+  a=profile.getEmail();
+
+
+
+  
+}
+
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+
+    $("#invisible").css("display", "none");
+    $(".g-signin2").css("display", "block" );
+    $(".data").css("display", "none");
+    setTimeout(function(){ window.location = 'http://localhost:8888/Group3.github.io/'; }, 1500);
+    });
+
+
+  }
+    </script>
+
+    
 
     <style>
 
@@ -71,13 +116,10 @@
    	<img id="pic" class="img-circle" width="50" height="50" style="margin-left: 3px;">
 
    	<p style="margin-left:2px;">Username:</p>
-   	<p id="username" class="alert alert-danger"></p>
+   	<p id="username" class="alert alert-info" style="margin-left: 2px; margin-right: 2px"></p>
 
    	<p style="margin-left:2px;">Email address:</p>
-   	<p id="email" class="alert alert-danger"></p>
-
-
-	
+   	<p id="email" class="alert alert-info" style="margin-left: 2px; margin-right: 2px"></p>
 
 
 	<?php 
@@ -99,7 +141,7 @@
 
 	else{
 		?>
-		<div id ="set_calendar" class="alert alert-danger" style="margin-left:2px; margin-bottom: 20px;">
+		<div id ="set_calendar" class="alert alert-info" style="margin-left:2px; margin-right: 2px; margin-bottom: 20px;">
 		<p style="margin-left: 2px; margin-bottom: 5px">Schedule a time here:</p>
 		<input type="date" id='available_dates'>
 		<select id='available_times'></select>
@@ -109,6 +151,7 @@
 		<p style="margin-left: 2px; margin-bottom: 5px">Delete an event here:</p>
 		<input type="text" id="eventid" name="" placeholder="Event Id">
 		<button id='delete'>Delete</button>
+
 		<!-- <p id='dump1' style="margin-left:2px"></p> -->
 		</div>
 
@@ -149,6 +192,7 @@
 			function createEvent(btn){
 				var date = document.getElementById('available_dates').value;
 				var time = document.getElementById('available_times').value;
+				var email = a;
 
 				var xhttp = new XMLHttpRequest();
 
@@ -161,11 +205,12 @@
 
 					}
 				};
-				xhttp.open('GET', 'http://localhost:8888/Group3.github.io/calendar/calendar.php?action=createEvent&date='+date+'&time=' +time+ '&t=' + Math.random());
+				xhttp.open('GET', 'http://localhost:8888/Group3.github.io/calendar/calendar.php?action=createEvent&date='+date+'&time=' +time+ '&t=' + Math.random() + '&email='+email);
 				xhttp.setRequestHeader('X-Requested-With', 'xmlhttprequest');
 				xhttp.send();
 
 			}
+
 
 			function delete_me(btn){
 
@@ -194,8 +239,9 @@
 		</script>
 	
 <p id="event_id_alert" style="border:1px solid black; margin: 1px 1px 30px 1px;background-color: black;color:white;">Forget your event id?<br>Send a message to jchunhui3@gmail.com</p>
-<a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger">Sign out</a>
-
+<a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger" style="margin-left: 2px;">Sign out</a>
+</div>
+</div>
 	<?php }
 	 ?>
 </body>

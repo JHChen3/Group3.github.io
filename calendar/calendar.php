@@ -69,10 +69,17 @@ function createEvent(){
 	$end_date_time = new DateTime($_GET['date']);
 	$end_date_time->setTime($_GET['time']+1, 0);
 
+	$email=$_GET['email'];
+
+
 
 	$client = getClient();
 
 	$service = new Google_Service_Calendar($client);
+
+
+
+
 	$event = new Google_Service_Calendar_Event(array(
 		'summary' => "Cleaner Schedule",
 		'location' => "CUSP",
@@ -88,15 +95,18 @@ function createEvent(){
 		'timeZone' => 'America/New_York',
 	),
 		
-		
+		 'attendees' => array(
+    		array('email' => $email),
+
+  	),
 
 		'guestsCanInviteOthers' => FALSE,
 		'visibility' => "private",
 		'reminders' => array(
 			'useDefault' => FALSE,
 			'overrides' => array(
-				array('method' => 'email', 'minutes' => 24*60),
-				array('method' => 'popup', 'minutes' => 10),
+				array('method' => 'email', 'minutes' => 5),
+				//array('method' => 'popup', 'minutes' => 10),
 			),
 		),
 	));

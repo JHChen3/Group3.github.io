@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="script.js"></script>
+    <!-- <script src="Getting_JSON_from_the_WIFI_Module_Server.js"></script> -->
     <style>
     	#google_signIn{
 			margin: 15px 30px 0 5px;
@@ -43,6 +44,7 @@
 	<div id="server_data">
    		<h1 style="border-bottom: 1px solid black; text-align: center">Getting Data from WIFI Module Server</h1>
    		<button id="loginButton">Getting Data</button>
+
    		<div id="displaystuff"></div>
     </div>
 
@@ -50,17 +52,58 @@
 		<h4 id="profile" style="border-bottom: 1px solid red; background-color: silver; margin-top: 0;text-align: center">Click the button below to sign in</h4>
 		<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+<script>
+	var ourRequest = new XMLHttpRequest();
+	var data;
 
+	$(document).ready(function(){
+				document.getElementById('loginButton').addEventListener('click', function(){
+					getData();
+
+				})
+			})
+function getData(){
+
+	ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-1.json');
+  	ourRequest.onload= function(){
+    data = JSON.parse(ourRequest.responseText);
+    a=ourRequest.responseText;
+    renderHTML(data); //funtion defined below
+    //window.alert(data); //for debugging purposes
+    //console.log(data[0]);
+
+  };
+
+  ourRequest.send();
+}
+
+function renderHTML(data){
+	
+		//document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].name);
+		//document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].name+"\n");
+		
+		//document.getElementById("displaystuff").insertAdjacentHTML('beforeend','<pre>'+data+'</pre>');
+
+		var i;
+		for (i in data){
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].name);
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend','<p>'+data[i].species+'</p>');
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend','<p>'+data[i].foods.likes[0]+'</p>');
+		}
+
+  
+}
+</script>
 
 
 		<div class="data">
    			<img id="pic" class="img-circle" width="50" height="50" style="margin-left: 3px;">
 
    			<p style="margin-left:2px;">Username:</p>
-   			<p id="username" class="alert alert-danger" style="margin-left: 2px; margin-right: 2px"></p>
+   			<p id="username" class="alert alert-info" style="margin-left: 2px; margin-right: 2px"></p>
 
    			<p style="margin-left:2px;">Email address:</p>
-   			<p id="email" class="alert alert-danger" style="margin-left: 2px; margin-right: 2px"></p>
+   			<p id="email" class="alert alert-info" style="margin-left: 2px; margin-right: 2px"></p>
 
 
    			<a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger" style="margin-left: 2px;">Sign out</a>

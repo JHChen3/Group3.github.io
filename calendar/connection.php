@@ -51,8 +51,8 @@ function getClient()
 
     // Refresh the token if it's expired.
         if ($client->isAccessTokenExpired()){
-        //$client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-        //file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+        // $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+        // file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
         unlink('credentials.json');
         header("Refresh:0; url=http://localhost:8888/Group3.github.io/calendar/");
     }
