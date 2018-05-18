@@ -164,6 +164,7 @@
 				})
 				document.getElementById('submit').addEventListener('click', function(){
 					createEvent(this);
+					receive_data(this);
 				})
 
 				document.getElementById('delete').addEventListener('click', function(){
@@ -211,6 +212,23 @@
 
 			}
 
+			function receive_data(btn){
+				
+
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						
+
+					}
+				};
+				xhttp.open('GET', '172.20.10.4');
+				xhttp.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+				xhttp.send();
+
+			}
+
 
 			function delete_me(btn){
 
@@ -240,6 +258,8 @@
 	
 <p id="event_id_alert" style="border:1px solid black; margin: 1px 1px 30px 1px;background-color: black;color:white;">Forget your event id?<br>Send a message to jchunhui3@gmail.com</p>
 <a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger" style="margin-left: 2px;">Sign out</a>
+<a href="http://localhost:8888/Group3.github.io/" class="alert alert-danger" style="margin-left: 2px;">Home Page</a>
+<a href="http://localhost:8888/Group3.github.io/data" class="alert alert-danger" style="margin-left: 2px;">See data</a>
 </div>
 </div>
 	<?php }

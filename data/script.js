@@ -17,6 +17,8 @@ function onSignIn(googleUser) {
 
   $("#event_id_alert").css("display", "block");
 
+  $("#server_data").css("display", "block");
+
 
 }
   function signOut() {

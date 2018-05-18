@@ -9,7 +9,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
     <!-- <script src="Getting_JSON_from_the_WIFI_Module_Server.js"></script> -->
     <style>
     	#google_signIn{
@@ -19,6 +19,9 @@
 			width: 520px;
 			height: 590px;
 		}
+		.g-signin2{
+			margin-left: 30%;
+		}
 		#server_data{
 			float:right;
 			width:700px; 
@@ -26,6 +29,7 @@
 			margin-right: 10px; 
 			margin-top: 30px;
 			border:1px solid black;
+			
 		} 
 		#loginButton{
 			margin-left: 20px;
@@ -33,16 +37,55 @@
 		#displaystuff{
 			margin-left: 3px;
 			width: 660px;
-			height: 450px;
+			height: 465px;
+
 			overflow:scroll;
 		}
 
     </style>
+
+    <script>
+    	function onSignIn(googleUser) {
+
+  var profile = googleUser.getBasicProfile();
+  $(".g-signin2").css("display", "none" );
+
+  $("#pic").attr("src", profile.getImageUrl());
+
+  $("#email").text(profile.getEmail());
+
+  $("#username").text(profile.getName());
+
+  $("#calendar").css("display", "block");
+
+  $("#profile").text("Your Profile");
+
+  $("#set_calendar").css("display", "block");
+
+  $("#event_id_alert").css("display", "block");
+
+  // $("#server_data").css("display", "block");
+
+
+}
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+
+    $("#invisible").css("display", "none");
+    $(".g-signin2").css("display", "block" );
+    $(".data").css("display", "none");
+    setTimeout(function(){ window.location = 'http://localhost:8888/Group3.github.io/'; }, 1500);
+    });
+
+
+  }
+    </script>
 </head>
 <body>
 
 	<div id="server_data">
-   		<h1 style="border-bottom: 1px solid black; text-align: center">Getting Data from WIFI Module Server</h1>
+   		<h1 style="border-bottom: 1px solid black; text-align: center; padding-bottom: 5px; margin-top: 0;background-color: silver;">Getting Data from WIFI Module Server</h1>
    		<button id="loginButton">Getting Data</button>
 
    		<div id="displaystuff"></div>
@@ -64,8 +107,9 @@
 			})
 function getData(){
 
-	ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-1.json');
+	ourRequest.open('GET', 'http://172.20.10.4/');
   	ourRequest.onload= function(){
+  	
     data = JSON.parse(ourRequest.responseText);
     a=ourRequest.responseText;
     renderHTML(data); //funtion defined below
@@ -84,12 +128,35 @@ function renderHTML(data){
 		
 		//document.getElementById("displaystuff").insertAdjacentHTML('beforeend','<pre>'+data+'</pre>');
 
-		var i;
-		for (i in data){
-			document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].name);
-			document.getElementById("displaystuff").insertAdjacentHTML('beforeend','<p>'+data[i].species+'</p>');
-			document.getElementById("displaystuff").insertAdjacentHTML('beforeend','<p>'+data[i].foods.likes[0]+'</p>');
-		}
+		// var i;
+		// for (i in data){
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','Name: ');
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].name);
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','</br>');
+
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','Species: ');
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].species);
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','</br>');
+
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','Likes: ');
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].foods.likes[0]+" ");
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[i].foods.likes[1]);
+		// 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','</br></br></br>');
+		// }
+		
+			var i;
+		
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend','Weight: ');
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[0].weight);
+		 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','</br>');
+
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend','Gyro: ');
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[0].gyro.Xaxis+"  ");
+			document.getElementById("displaystuff").insertAdjacentHTML('beforeend',data[0].gyro.Yaxis);
+			
+		 	document.getElementById("displaystuff").insertAdjacentHTML('beforeend','</br></br></br>');
+		
+
 
   
 }
@@ -107,6 +174,8 @@ function renderHTML(data){
 
 
    			<a href="https://mail.google.com/mail/u/0/?logout" target="_blank" onclick="signOut();" class="alert alert-danger" style="margin-left: 2px;">Sign out</a>
+   			<a href="http://localhost:8888/Group3.github.io/" class="alert alert-danger" style="margin-left: 2px;">Home Page</a>
+   			<a href="http://localhost:8888/Group3.github.io/calendar" class="alert alert-danger" style="margin-left: 2px;">Make Appointment</a>
     	</div>
 	</div>
 
